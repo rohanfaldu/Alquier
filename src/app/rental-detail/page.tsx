@@ -47,7 +47,7 @@ export default function RentalDetail() {
                             {/* <div className="flex-2 flex relative -top-[10px] h-[2px] bg-[#003893] rounded-full"></div> */}
                             <div className="flex flex-col items-center">
                                 <div className="w-[20px] h-[20px] rounded-full bg-[#003893] flex items-center justify-center text-white font-open-sans font-medium text-[12px] leading-[16px] text-[#474953]">
-                                    {(isProductListData) ? (<Image src="/icons/Correct.svg" alt="Check" width={20} height={20} />) : '2'}
+                                    {(isProductListData) ? (<Image src="/icons/Correct.svg" alt="Check" width={12} height={12} />) : '2'}
                                 </div>
                                 <div className="flex items-center mt-1">
                                     <span className="font-outfit font-semimedium text-[12px] leading-[16px] text-[#001D65]">Vehículo</span>
@@ -83,7 +83,7 @@ export default function RentalDetail() {
                     </div>
                 </div>
 
-                {(!isProductListData) ? (
+                {(!isProductListData) && (
                     <>
                         {/* Content area */}
                         <div className="p-4 mt-[36px]">
@@ -260,8 +260,8 @@ export default function RentalDetail() {
                             </div>
                         </div>
                     </>
-                ) : ""
-                }
+                )}
+                {isProductListData &&(
                 <div>
                     <div className="">
                         <div className="bg-white shadow-sm">
@@ -409,6 +409,7 @@ export default function RentalDetail() {
                         </div>
                     </div>
                 </div>
+                )}
             </div>
         </div>
     );
