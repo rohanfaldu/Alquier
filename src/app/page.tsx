@@ -11,23 +11,18 @@ export default function Home() {
     const [isDropoffOfficeOpen1, setIsDropoffOfficeOpen1] = useState(false);
     const [selectedPickupOffice, setSelectedPickupOffice] = useState('');
     const [selectedPickupOffice1, setSelectedPickupOffice1] = useState('');
-    //const [selectedDropoffOffice, setSelectedDropoffOffice] = useState('');
+    const [selectedDropoffOffice, setSelectedDropoffOffice] = useState('');
     const [pickupDate, setPickupDate] = useState("");
     const [pickupDate1, setPickupDate1] = useState("");
     const [pickupTime, setPickupTime] = useState("");
     const [pickupTime1, setPickupTime1] = useState("");
-    // const [dropoffDate, setDropoffDate] = useState("");
-    // const [dropoffTime, setDropoffTime] = useState("");
+    const [dropoffDate, setDropoffDate] = useState("");
+    const [dropoffTime, setDropoffTime] = useState("");
     const [isDifferentOffice, setIsDifferentOffice] = useState(false);
     const router = useRouter();
     const handleInputFocus = (fieldName: string) => {
         console.log(`Focused: ${fieldName}`);
-        console.log(isDropoffOfficeOpen)
-        console.log(isDropoffOfficeOpen1)
-        console.log(isDropoffOfficeOpen)
-        // setSelectedDropoffOffice('');
-        // setDropoffDate('');
-        // setDropoffTime('');
+
     };
     // Add error states
     const [errors, setErrors] = useState({
@@ -44,67 +39,67 @@ export default function Home() {
 
     // Add validation function
     const validateForm = () => {
-        // let tempErrors = {
-        //     pickupOffice: '',
-        //     pickupOffice1: '',
-        //     pickupDate: '',
-        //     pickupDate1: '',
-        //     pickupTime: '',
-        //     pickupTime1: '',
-        //     dropoffOffice: '',
-        //     dropoffDate: '',
-        //     dropoffTime: ''
-        // };
-        // let isValid = true;
+        let tempErrors = {
+            pickupOffice: '',
+            pickupOffice1: '',
+            pickupDate: '',
+            pickupDate1: '',
+            pickupTime: '',
+            pickupTime1: '',
+            dropoffOffice: '',
+            dropoffDate: '',
+            dropoffTime: ''
+        };
+        let isValid = true;
 
-        // if (!selectedPickupOffice) {
-        //     tempErrors.pickupOffice = 'Por favor, selecciona una oficina de recogida';
-        //     isValid = false;
-        // }
+        if (!selectedPickupOffice) {
+            tempErrors.pickupOffice = 'Por favor, selecciona una oficina de recogida';
+            isValid = false;
+        }
 
-        // if (!selectedPickupOffice1) {
-        //     tempErrors.pickupOffice1 = 'Por favor, selecciona una oficina de recogida';
-        //     isValid = false;
-        // }
+        if (!selectedPickupOffice1) {
+            tempErrors.pickupOffice1 = 'Por favor, selecciona una oficina de recogida';
+            isValid = false;
+        }
 
-        // if (!pickupDate) {
-        //     tempErrors.pickupDate = 'Por favor, selecciona una fecha de recogida';
-        //     isValid = false;
-        // }
+        if (!pickupDate) {
+            tempErrors.pickupDate = 'Por favor, selecciona una fecha de recogida';
+            isValid = false;
+        }
 
-        // if (!pickupTime) {
-        //     tempErrors.pickupTime = 'Por favor, selecciona una hora de recogida';
-        //     isValid = false;
-        // }
+        if (!pickupTime) {
+            tempErrors.pickupTime = 'Por favor, selecciona una hora de recogida';
+            isValid = false;
+        }
 
-        // if (!pickupDate1) {
-        //     tempErrors.pickupDate1 = 'Por favor, selecciona una fecha de recogida';
-        //     isValid = false;
-        // }
+        if (!pickupDate1) {
+            tempErrors.pickupDate1 = 'Por favor, selecciona una fecha de recogida';
+            isValid = false;
+        }
 
-        // if (!pickupTime1) {
-        //     tempErrors.pickupTime1 = 'Por favor, selecciona una hora de recogida';
-        //     isValid = false;
-        // }
+        if (!pickupTime1) {
+            tempErrors.pickupTime1 = 'Por favor, selecciona una hora de recogida';
+            isValid = false;
+        }
 
-        // if (isDifferentOffice) {
-        //     if (!selectedDropoffOffice) {
-        //         tempErrors.dropoffOffice = 'Por favor, selecciona una oficina de devolución';
-        //         isValid = false;
-        //     }
+        if (isDifferentOffice) {
+            if (!selectedDropoffOffice) {
+                tempErrors.dropoffOffice = 'Por favor, selecciona una oficina de devolución';
+                isValid = false;
+            }
 
-        //     if (!dropoffDate) {
-        //         tempErrors.dropoffDate = 'Por favor, selecciona una fecha de devolución';
-        //         isValid = false;
-        //     }
+            if (!dropoffDate) {
+                tempErrors.dropoffDate = 'Por favor, selecciona una fecha de devolución';
+                isValid = false;
+            }
 
-        //     if (!dropoffTime) {
-        //         tempErrors.dropoffTime = 'Por favor, selecciona una hora de devolución';
-        //         isValid = false;
-        //     }
-        // }
+            if (!dropoffTime) {
+                tempErrors.dropoffTime = 'Por favor, selecciona una hora de devolución';
+                isValid = false;
+            }
+        }
 
-        // setErrors(tempErrors);
+        setErrors(tempErrors);
         return true;
     };
 
