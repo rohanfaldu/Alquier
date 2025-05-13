@@ -11,17 +11,23 @@ export default function Home() {
     const [isDropoffOfficeOpen1, setIsDropoffOfficeOpen1] = useState(false);
     const [selectedPickupOffice, setSelectedPickupOffice] = useState('');
     const [selectedPickupOffice1, setSelectedPickupOffice1] = useState('');
-    const [selectedDropoffOffice, setSelectedDropoffOffice] = useState('');
+    //const [selectedDropoffOffice, setSelectedDropoffOffice] = useState('');
     const [pickupDate, setPickupDate] = useState("");
     const [pickupDate1, setPickupDate1] = useState("");
     const [pickupTime, setPickupTime] = useState("");
     const [pickupTime1, setPickupTime1] = useState("");
-    const [dropoffDate, setDropoffDate] = useState("");
-    const [dropoffTime, setDropoffTime] = useState("");
+    // const [dropoffDate, setDropoffDate] = useState("");
+    // const [dropoffTime, setDropoffTime] = useState("");
     const [isDifferentOffice, setIsDifferentOffice] = useState(false);
     const router = useRouter();
     const handleInputFocus = (fieldName: string) => {
         console.log(`Focused: ${fieldName}`);
+        console.log(isDropoffOfficeOpen)
+        console.log(isDropoffOfficeOpen1)
+        console.log(isDropoffOfficeOpen)
+        // setSelectedDropoffOffice('');
+        // setDropoffDate('');
+        // setDropoffTime('');
     };
     // Add error states
     const [errors, setErrors] = useState({
@@ -38,68 +44,68 @@ export default function Home() {
 
     // Add validation function
     const validateForm = () => {
-        let tempErrors = {
-            pickupOffice: '',
-            pickupOffice1: '',
-            pickupDate: '',
-            pickupDate1: '',
-            pickupTime: '',
-            pickupTime1: '',
-            dropoffOffice: '',
-            dropoffDate: '',
-            dropoffTime: ''
-        };
-        let isValid = true;
+        // let tempErrors = {
+        //     pickupOffice: '',
+        //     pickupOffice1: '',
+        //     pickupDate: '',
+        //     pickupDate1: '',
+        //     pickupTime: '',
+        //     pickupTime1: '',
+        //     dropoffOffice: '',
+        //     dropoffDate: '',
+        //     dropoffTime: ''
+        // };
+        // let isValid = true;
 
-        if (!selectedPickupOffice) {
-            tempErrors.pickupOffice = 'Por favor, selecciona una oficina de recogida';
-            isValid = false;
-        }
+        // if (!selectedPickupOffice) {
+        //     tempErrors.pickupOffice = 'Por favor, selecciona una oficina de recogida';
+        //     isValid = false;
+        // }
 
-        if (!selectedPickupOffice1) {
-            tempErrors.pickupOffice1 = 'Por favor, selecciona una oficina de recogida';
-            isValid = false;
-        }
+        // if (!selectedPickupOffice1) {
+        //     tempErrors.pickupOffice1 = 'Por favor, selecciona una oficina de recogida';
+        //     isValid = false;
+        // }
 
-        if (!pickupDate) {
-            tempErrors.pickupDate = 'Por favor, selecciona una fecha de recogida';
-            isValid = false;
-        }
+        // if (!pickupDate) {
+        //     tempErrors.pickupDate = 'Por favor, selecciona una fecha de recogida';
+        //     isValid = false;
+        // }
 
-        if (!pickupTime) {
-            tempErrors.pickupTime = 'Por favor, selecciona una hora de recogida';
-            isValid = false;
-        }
+        // if (!pickupTime) {
+        //     tempErrors.pickupTime = 'Por favor, selecciona una hora de recogida';
+        //     isValid = false;
+        // }
 
-        if (!pickupDate1) {
-            tempErrors.pickupDate1 = 'Por favor, selecciona una fecha de recogida';
-            isValid = false;
-        }
+        // if (!pickupDate1) {
+        //     tempErrors.pickupDate1 = 'Por favor, selecciona una fecha de recogida';
+        //     isValid = false;
+        // }
 
-        if (!pickupTime1) {
-            tempErrors.pickupTime1 = 'Por favor, selecciona una hora de recogida';
-            isValid = false;
-        }
+        // if (!pickupTime1) {
+        //     tempErrors.pickupTime1 = 'Por favor, selecciona una hora de recogida';
+        //     isValid = false;
+        // }
 
-        if (isDifferentOffice) {
-            if (!selectedDropoffOffice) {
-                tempErrors.dropoffOffice = 'Por favor, selecciona una oficina de devolución';
-                isValid = false;
-            }
+        // if (isDifferentOffice) {
+        //     if (!selectedDropoffOffice) {
+        //         tempErrors.dropoffOffice = 'Por favor, selecciona una oficina de devolución';
+        //         isValid = false;
+        //     }
 
-            if (!dropoffDate) {
-                tempErrors.dropoffDate = 'Por favor, selecciona una fecha de devolución';
-                isValid = false;
-            }
+        //     if (!dropoffDate) {
+        //         tempErrors.dropoffDate = 'Por favor, selecciona una fecha de devolución';
+        //         isValid = false;
+        //     }
 
-            if (!dropoffTime) {
-                tempErrors.dropoffTime = 'Por favor, selecciona una hora de devolución';
-                isValid = false;
-            }
-        }
+        //     if (!dropoffTime) {
+        //         tempErrors.dropoffTime = 'Por favor, selecciona una hora de devolución';
+        //         isValid = false;
+        //     }
+        // }
 
-        setErrors(tempErrors);
-        return isValid;
+        // setErrors(tempErrors);
+        return true;
     };
 
     // Add click outside handler
@@ -128,7 +134,14 @@ export default function Home() {
             document.removeEventListener('mousedown', handleClickOutside1);
         };
     }, []);
-    
+
+
+    const handleSubmit = () => {
+        if (validateForm()) {
+            // Form is valid, navigate to rental-detail
+            router.push('/rental-detail');
+        }
+    };
 
     // Modify the form elements to include error messages
     return (
@@ -205,7 +218,7 @@ export default function Home() {
                             </button>
 
                             {isPickupOfficeOpen && (
-                                <ul className="fixed top-[295px] w-[87.5%] bg-white border rounded-lg shadow-lg z-50">
+                                <ul className="fixed top-[338px] min-w-[335px] bg-white border rounded-lg shadow-lg z-50">
                                     {['Madrid Centro', 'Barcelona Centro', 'Valencia', 'Sevilla'].map((office) => (
                                         <li
                                             key={office}
@@ -286,7 +299,7 @@ export default function Home() {
                             </button>
 
                             {isPickupOfficeOpen1 && (
-                                <ul className="fixed top-[340px] w-[87.5%] bg-white border rounded-lg shadow-lg z-50">
+                                <ul className="fixed top-[675px] min-w-[335px] bg-white border rounded-lg shadow-lg z-50">
                                     {['Madrid Centro', 'Barcelona Centro', 'Valencia', 'Sevilla'].map((office) => (
                                         <li
                                             key={office}
@@ -373,46 +386,8 @@ export default function Home() {
                     </div>
 
                     <button
-                        className="w-full bg-[#003893] text-white py-4 mt-[24px] rounded-[50px] font-medium"
-                        onClick={() => {
-                            if (validateForm()) {
-                                // Check if all required fields are filled
-                                const allFieldsFilled = 
-                                    selectedPickupOffice && 
-                                    selectedPickupOffice1 && 
-                                    pickupDate && 
-                                    pickupDate1 && 
-                                    pickupTime && 
-                                    pickupTime1 && 
-                                    (!isDifferentOffice || (
-                                        isDifferentOffice && 
-                                        selectedDropoffOffice && 
-                                        dropoffDate && 
-                                        dropoffTime
-                                    ));
-
-                                if (allFieldsFilled) {
-                                    router.push('/rental-detail');
-                                } else {
-                                    // If any field is missing, show appropriate error messages
-                                    const newErrors = { ...errors };
-                                    if (!selectedPickupOffice) newErrors.pickupOffice = 'Por favor, selecciona una oficina de recogida';
-                                    if (!selectedPickupOffice1) newErrors.pickupOffice1 = 'Por favor, selecciona una oficina de recogida';
-                                    if (!pickupDate) newErrors.pickupDate = 'Por favor, selecciona una fecha de recogida';
-                                    if (!pickupDate1) newErrors.pickupDate1 = 'Por favor, selecciona una fecha de recogida';
-                                    if (!pickupTime) newErrors.pickupTime = 'Por favor, selecciona una hora de recogida';
-                                    if (!pickupTime1) newErrors.pickupTime1 = 'Por favor, selecciona una hora de recogida';
-                                    
-                                    if (isDifferentOffice) {
-                                        if (!selectedDropoffOffice) newErrors.dropoffOffice = 'Por favor, selecciona una oficina de devolución';
-                                        if (!dropoffDate) newErrors.dropoffDate = 'Por favor, selecciona una fecha de devolución';
-                                        if (!dropoffTime) newErrors.dropoffTime = 'Por favor, selecciona una hora de devolución';
-                                    }
-                                    
-                                    setErrors(newErrors);
-                                }
-                            }
-                        }}
+                        onClick={handleSubmit}
+                        className="w-full bg-[#003893] text-white font-outfit font-medium text-[16px] leading-[20px] py-4 rounded-[4px] hover:bg-[#002d7a] transition-colors"
                     >
                         Continuar
                     </button>
