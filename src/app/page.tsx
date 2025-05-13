@@ -22,7 +22,11 @@ export default function Home() {
     const router = useRouter();
     const handleInputFocus = (fieldName: string) => {
         console.log(`Focused: ${fieldName}`);
-
+        console.log(isDropoffOfficeOpen);
+        console.log(isDropoffOfficeOpen1);
+        setDropoffDate("");
+        setSelectedDropoffOffice("");
+        setDropoffTime("");
     };
     // Add error states
     const [errors, setErrors] = useState({
@@ -39,7 +43,7 @@ export default function Home() {
 
     // Add validation function
     const validateForm = () => {
-        let tempErrors = {
+        const tempErrors = {
             pickupOffice: '',
             pickupOffice1: '',
             pickupDate: '',
@@ -98,7 +102,7 @@ export default function Home() {
                 isValid = false;
             }
         }
-
+        console.log(isValid);
         setErrors(tempErrors);
         return true;
     };
@@ -192,8 +196,8 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-4 pb-[40px]">
-                    <div className="dropdown-container">
-                        <div className={`form-group relative border rounded-[4px] ${errors.pickupOffice ? 'border-red-500' : selectedPickupOffice ? 'border-[#006FC6]' : 'border-[#787B8B]'} overflow-hidden`}>
+                    <div className="dropdown-container relative">
+                        <div className={`form-group border rounded-[4px] ${errors.pickupOffice ? 'border-red-500' : selectedPickupOffice ? 'border-[#006FC6]' : 'border-[#787B8B]'} overflow-hidden`}>
                             <button
                                 type="button"
                                 className="w-full px-2 py-4 bg-white flex items-center gap-2 text-left font-outfit text-[16px] leading-[20px]"
@@ -213,8 +217,8 @@ export default function Home() {
                             </button>
 
                             {isPickupOfficeOpen && (
-                                <ul className="fixed top-[338px] min-w-[335px] bg-white border rounded-lg shadow-lg z-50">
-                                    {['Madrid Centro', 'Barcelona Centro', 'Valencia', 'Sevilla'].map((office) => (
+                                <ul className="absolute w-[100%] h-[156px] overflow-y-auto top-[60px] bg-white border rounded-lg shadow-lg z-50">
+                                    {['Madrid Centro', 'Barcelona Centro', 'Valencia', 'Sevilla','Madrid Centro1', 'Barcelona Centro1', 'Valencia1', 'Sevilla1'].map((office) => (
                                         <li
                                             key={office}
                                             className="p-2 hover:bg-[#006FC6]/10 cursor-pointer text-[#0E1330]"
@@ -273,8 +277,8 @@ export default function Home() {
                     </div>
                     
                         
-                    <div className="dropdown-container">
-                        <div className={`form-group relative border rounded-[4px] ${errors.pickupOffice1 ? 'border-[#E01010]' : selectedPickupOffice1 ? 'border-[#006FC6]' : 'border-[#787B8B]'} overflow-hidden`}>
+                    <div className="dropdown-container relative">
+                        <div className={`form-group border rounded-[4px] ${errors.pickupOffice1 ? 'border-[#E01010]' : selectedPickupOffice1 ? 'border-[#006FC6]' : 'border-[#787B8B]'} overflow-hidden`}>
                             <button
                                 type="button"
                                 className="w-full px-2 py-4 bg-white flex items-center gap-2 text-left font-outfit text-[16px] leading-[20px]"
@@ -294,7 +298,7 @@ export default function Home() {
                             </button>
 
                             {isPickupOfficeOpen1 && (
-                                <ul className="fixed top-[675px] min-w-[335px] bg-white border rounded-lg shadow-lg z-50">
+                                <ul className="absolute w-[100%] h-[156px] overflow-y-auto top-[60px] min-w-[335px] bg-white border rounded-lg shadow-lg z-50">
                                     {['Madrid Centro', 'Barcelona Centro', 'Valencia', 'Sevilla'].map((office) => (
                                         <li
                                             key={office}
