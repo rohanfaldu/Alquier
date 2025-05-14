@@ -1,5 +1,4 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Open_Sans } from 'next/font/google';
