@@ -11,22 +11,16 @@ export default function Home() {
     const [isDropoffOfficeOpen1, setIsDropoffOfficeOpen1] = useState(false);
     const [selectedPickupOffice, setSelectedPickupOffice] = useState('');
     const [selectedPickupOffice1, setSelectedPickupOffice1] = useState('');
-    const [selectedDropoffOffice, setSelectedDropoffOffice] = useState('');
     const [pickupDate, setPickupDate] = useState("");
     const [pickupDate1, setPickupDate1] = useState("");
     const [pickupTime, setPickupTime] = useState("");
     const [pickupTime1, setPickupTime1] = useState("");
-    const [dropoffDate, setDropoffDate] = useState("");
-    const [dropoffTime, setDropoffTime] = useState("");
     const [isDifferentOffice, setIsDifferentOffice] = useState(false);
     const router = useRouter();
     const handleInputFocus = (fieldName: string) => {
         console.log(`Focused: ${fieldName}`);
         console.log(isDropoffOfficeOpen);
         console.log(isDropoffOfficeOpen1);
-        setDropoffDate("");
-        setSelectedDropoffOffice("");
-        setDropoffTime("");
     };
     // Add error states
     const [errors, setErrors] = useState({
@@ -85,27 +79,11 @@ export default function Home() {
             tempErrors.pickupTime1 = 'Por favor, selecciona una hora de recogida';
             isValid = false;
         }
-
-        if (isDifferentOffice) {
-            if (!selectedDropoffOffice) {
-                tempErrors.dropoffOffice = 'Por favor, selecciona una oficina de devolución';
-                isValid = false;
-            }
-
-            if (!dropoffDate) {
-                tempErrors.dropoffDate = 'Por favor, selecciona una fecha de devolución';
-                isValid = false;
-            }
-
-            if (!dropoffTime) {
-                tempErrors.dropoffTime = 'Por favor, selecciona una hora de devolución';
-                isValid = false;
-            }
-        }
         setErrors(tempErrors);
+        console.log(isValid,'>>>>>>>>>>>>> isValid')
         return isValid; // Return the actual validation result instead of always true
     };
-
+    console.log(errors,'>>>>>>>>>>>>> errors');
     // Add click outside handler
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -137,23 +115,23 @@ export default function Home() {
     const handleSubmit = () => {
         if (validateForm()) {
             // Store form data in localStorage or state management solution
-            const formData = {
-                pickupOffice: selectedPickupOffice,
-                pickupOffice1: selectedPickupOffice1,
-                pickupDate: pickupDate,
-                pickupDate1: pickupDate1,
-                pickupTime: pickupTime,
-                pickupTime1: pickupTime1,
-                isDifferentOffice: isDifferentOffice,
-                dropoffOffice: selectedDropoffOffice,
-                dropoffDate: dropoffDate,
-                dropoffTime: dropoffTime
-            };
+            // const formData = {
+            //     pickupOffice: selectedPickupOffice,
+            //     pickupOffice1: selectedPickupOffice1,
+            //     pickupDate: pickupDate,
+            //     pickupDate1: pickupDate1,
+            //     pickupTime: pickupTime,
+            //     pickupTime1: pickupTime1,
+            //     isDifferentOffice: isDifferentOffice,
+            //     dropoffOffice: selectedDropoffOffice,
+            //     dropoffDate: dropoffDate,
+            //     dropoffTime: dropoffTime
+            // };
             
-            // Store the data
-            localStorage.setItem('rentalFormData', JSON.stringify(formData));
+            // // Store the data
+            // localStorage.setItem('rentalFormData', JSON.stringify(formData));
             
-            // Navigate to rental-detail page
+            // // Navigate to rental-detail page
             router.push('/rental-detail');
         }
     };
